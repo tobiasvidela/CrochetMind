@@ -12,6 +12,7 @@
 .body {
     background: radial-gradient(#6587FD, #312BB3);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
@@ -91,4 +92,8 @@
 .log-btn:hover {
     background-position: 0;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+}
+.credits {
+    color: rgba(250, 250, 250, 0.35);
+    text-decoration: none;
 }

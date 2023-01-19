@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/*GENERAL*/
+
+.body {
+    background: radial-gradient(#6587FD, #312BB3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-position: 100%;
+    background-size: 250%;
+    transition: 0.5s background;
+}
+.section-title {
+    font-size: 2.5rem;
+    color: #312BB3;
+    font-weight: bolder;
+}
+
+/*FORM*/
+.section-form {
+    margin: auto;
+    background-color: #9B70FA;
+    padding: 20px 40px 20px 40px;
+    border-radius: 15px;
+    box-shadow: 0 5px 17px rgba(0, 0, 0, 0.25);
+}
+.form {
+    margin: 1.1rem 0 1.4rem 0;
+    padding: 10px 0;
+    width: min(250px,400px);
+}
+.container-form input{
+    margin: 1.2rem 0;
+    padding: 7px 15px;
+    width: 100%;
+    font-size: 17px;
+    font-weight: bold;
+    background-color: #9B70FA;
+    border: none;
+    border-radius: 10px;
+    color: #f0f0f0;
+    transition: all 0.2s;
+}
+.container-form input:hover {
+    background-color: #6587FDa1;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+}
+.container-form input:focus {
+    background-color: #6587FDa1;
+    outline: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+}
+.container-form input::placeholder {
+    color: #f0f0f0;
+}
+.form-group {
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.icon-input {
+    color: #312BB3;
+    position: absolute;
+    top: 35%;
+    right: 5%;
+}
+.log-btn {
+    margin: 30px 0 0 0;
+    padding: 12px;
+    font-size: 1.2rem;
+    font-weight: bolder;
+    color: #312BB3;
+    text-decoration: none;
+    border-radius: 12px;
+    background: linear-gradient(
+        -45deg, transparent 50%, #6587FD 50%
+    );
+    background-position: 100%;
+    background-size: 250%;
+    transition: 0.5s background;
+}
+.log-btn:hover {
+    background-position: 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+}

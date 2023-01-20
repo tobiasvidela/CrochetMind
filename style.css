@@ -97,3 +97,7 @@
     color: rgba(250, 250, 250, 0.35);
     text-decoration: none;
 }
+#eye:hover {
+    color: #6587FD;
+    cursor: pointer;
+}

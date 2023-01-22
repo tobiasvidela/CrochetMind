@@ -8,7 +8,9 @@
 }
 
 /*GENERAL*/
-
+footer {
+    text-align: center;
+}
 .body {
     background: radial-gradient(#6587FD, #312BB3);
     display: flex;

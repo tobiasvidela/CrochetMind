@@ -2,5 +2,12 @@
 
 .column {
     height: max-content;
-    gap: 15px;
+    width: calc(100% - 15px);
+    padding: 1em;
+    margin-top: 10px;
+    border-radius: 20px;
+    background: #534EC2;
+    text-align: justify;
+    font-size: 20px;
+    color: #fff;
 }

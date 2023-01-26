@@ -113,16 +113,52 @@
         </div>
     </div>
     <section class="home-content">
-        <div class="column text d-grid column-gap-1">
+        <div class="column d-grid">
             <div class="row">
-                <div class="col-12 col-md-6 col-lg-4">
-                    Contenido temporal
-                </div>
-                <div class="col-12 col-md-4">
-                    Contenido temporal
-                </div>
-                <div class="col-12 col-md-4">
-                    Contenido temporal
+                <div class="col-12 col-xxl-6">
+                    <h3 class="tool-title">Regular Raises</h3>
+                    <p class="tool-description">
+                        This tool calculates a pattern of regular raises (starting in a magic ring). This 
+                        (at the moment) ONLY gives regular raises.
+                    </p>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <ul>
+                                <li>Steps:
+                                    <ol>
+                                        <li>
+                                            Select the pattern you want.
+                                        </li>
+                                        <li>
+                                            Put the start and the end number the points you want.
+                                        </li>
+                                        <li>
+                                            Click the button to calculate the pattern.
+                                        </li>
+                                    </ol>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <select class="values patterns" name="patterns" id="patterns">
+                                <option value="spiral">Spiral</option>
+                                <option value="circle">Circle</option>
+                                <option value="square">Square</option>
+                                <option value="triangle">Triangle</option>
+                            </select>
+                            <input class="values points" type="number" step="1" min="3" name="start" id="start" placeholder="Start">
+                            <input class="values points" type="number" step="1" min="0" name="end" id="end" placeholder="End">
+                            <button class="pattern-generator">
+                                Generate
+                                <i class="fa-solid fa-pen"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="display">
+                        <i class="pattern-icons fa-solid fa-eye" id="pattern-toggle-view"></i>
+                        <i class="pattern-icons fa-solid fa-circle-info" id="pattern-help"></i>
+                        <p class="pattern-result"> The pattern goes here. </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -136,6 +172,9 @@
     </footer>
 
     <!-- SCRIPTS -->
+    <script src="../scripts/tools.js"></script>
     <script src="../scripts/sidenavbar.js"></script>
+    <!-- SWEETALERT -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 </html>

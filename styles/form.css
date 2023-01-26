@@ -1,33 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
-/*GENERAL*/
-footer {
-    text-align: center;
-}
-.body {
-    background: radial-gradient(#6587FD, #312BB3);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-position: 100%;
-    background-size: 250%;
-    transition: 0.5s background;
-}
-.section-title {
-    font-size: 2.5rem;
-    color: #312BB3;
-    font-weight: bolder;
-}
-
 /*FORM*/
 .section-form {
     margin: auto;

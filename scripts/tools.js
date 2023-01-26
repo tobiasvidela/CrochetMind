@@ -11,20 +11,25 @@ const patterns = document.querySelector('.patterns'),
 
       
       
-btnGenerator.addEventListener('click',()=>{
-    let startPoints = start.value;
-
+btnGenerator.addEventListener('click',() => {
+    let startPoints = start.value,
+        endPoints = end.value;
     console.log(start);
-    let pattern = `0 - Anillo Mágico <br>1 - ${startPoints}mp [${startPoints}] (inicio)<br>`;
+
+    let pattern = ``;
 
     switch (patterns) {
         case 'spiral':
+            pattern = getPattern(startPoints, endPoints, 'spiral');
             break;
         case 'circle':
+            pattern = getPattern(startPoints, endPoints, 'circle');
             break;
         case 'square':
+            pattern = getPattern(startPoints, endPoints, 'square');
             break;
         case 'triangle':
+            pattern = getPattern(startPoints, endPoints, 'triangle');
             break;
     };
     
@@ -32,6 +37,10 @@ btnGenerator.addEventListener('click',()=>{
     return result.innerHTML = pattern;
 });
 
+function getPattern(initial, final, pat) { //get the pattern of regular raises
+    let raises = `0 ~ Anillo Mágico ~ <br>`;
+    return raises;
+}
 
 function fixEnd() { //adapts end points to be proportional to start points
     let startValue = Number(start.value);

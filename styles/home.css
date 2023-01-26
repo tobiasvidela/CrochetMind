@@ -5,7 +5,7 @@ body {
     min-height: 100vh;
     width: 100%;
     overflow: hidden;
-    background: radial-gradient(#534EC2, #6E66FF);
+    background: linear-gradient(135deg,#534EC2, #6E66FF);
     background-position: 100%;
     background-size: 250%;
 }
@@ -17,9 +17,13 @@ body {
     top: 0;
     left: 0;
     height: 100%;
-    width: 240px;
+    width: 78px;
     padding: 6px 14px;
     background: #1D1B42;
+    transition: all .5s ease-out;
+}
+.sidebar.active {
+    width: 240px;
 }
 .sidebar .logo-content .logo {
     color: #5953CF;
@@ -27,10 +31,19 @@ body {
     height: 50px;
     width: 100%;
     align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: all .5s ease-out;
+}
+.sidebar.active .logo-content .logo {
+    opacity: 1;
+    pointer-events: none;
 }
 .logo-content .logo .icon-img {
-    width: 2em;
-    margin-left: 5px;
+    width: 2.5em;
+    padding: .5em;
+    background: #5953CF;
+    border-radius: 12px;
 }
 .logo-content .logo .logo-name {
     font-size: 20px;
@@ -39,7 +52,7 @@ body {
 }
 .sidebar #btn-menu-sidebar {
     position: absolute;
-    left: 90%;
+    left: 50%;
     top: 6px;
     color: #6E66FF;
     font-size: 20px;
@@ -48,9 +61,14 @@ body {
     text-align: center;
     line-height: 50px;
     transform: translateX(-50%);
+    cursor: pointer;
+}
+.sidebar.active #btn-menu-sidebar {
+    left: 92%;
 }
 .sidebar ul {
     margin-top: 15px;
+    padding: 0;
 }
 .sidebar ul li {
     position: relative;
@@ -64,7 +82,7 @@ body {
     position: absolute;
     left: 122px;
     top: 0;
-    transform: translateY(-50%);
+    transform: translate(-50%,-50%);
     border-radius: 6px;
     height: 35px;
     width: max-content;
@@ -79,6 +97,9 @@ body {
     color: #383482;
     font-size: 1em;
     font-weight: bold;
+}
+.sidebar.active ul li .tooltip {
+    display: none;
 }
 .sidebar ul li:hover .tooltip {
     transition: all .5s ease;
@@ -102,7 +123,6 @@ body {
 .sidebar ul li .fa-magnifying-glass {
     position: absolute;
     top: 50%;
-    left: 10px;
     transform: translateY(-50%);
     z-index: 99;
     color: #fff;
@@ -115,55 +135,90 @@ body {
     text-decoration: none;
     transition: all .4s ease;
     border-radius: 12px;
+    white-space: nowrap;
 }
 .sidebar ul li a:hover {
     color: #383482;
 }
-.sidebar ul li a i {
+.sidebar ul li i {
     height: 50px;
     min-width: 50px;
     border-radius: 12px;
     line-height: 50px;
     text-align: center;
 }
+.sidebar .links-name {
+    opacity: 0;
+    pointer-events: none;
+}
+.sidebar.active .links-name {
+    opacity: 1;
+    pointer-events: auto;
+    transition: all .5s ease-out;
+}
+
+/*-Profile-*/
+
 .sidebar .profile-content {
     position: absolute;
     color: #6E66FF;
     bottom: 0;
     left: 0;
     width: 100%;
-    background: #383482;
 }
 .sidebar .profile-content .profile {
     position: relative;
     padding: 10px 6px;
     height: 60px;
+    transition: all .4s ease-out;
+    background: none;
 }
-.profile-content .profile-details img {
+.sidebar.active .profile-content .profile {
+    background: #383482;
+}
+.sidebar .profile .profile-details {
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    white-space: nowrap;
+}
+.sidebar.active .profile .profile-details {
+    opacity: 1;
+    pointer-events: auto;
+}
+.profile .profile-details img {
     height: 45px;
     width: 45px;
     object-fit: cover;
     border-radius: 12px;
 }
-.profile-content .profile-details .name-rol {
+.profile .profile-details .name-rol {
     margin-left: 10px;
 }
-.profile-content .profile-details .name {
+.profile .profile-details .name {
     font-size: 15px;
     font-weight: bold;
 }
-.profile-content .profile-details .rol {
+.profile .profile-details .rol {
     font-size: 12px;
 }
 .profile #log-out {
     position: absolute;
-    left: 88%;
+    left: 50%;
     bottom: 5px;
     transform: translateX(-50%);
     min-width: 50px;
     line-height: 50px;
     font-size: 20px;
     border-radius: 12px;
+    transition: all .4s ease-out;
+    background: #383482;
+    text-align: center;
+}
+.sidebar.active .profile #log-out {
+    left: 88%;
+    background: none;
 }
 
 /*HomeContent*/
@@ -171,8 +226,15 @@ body {
 .home-content {
     position: absolute;
     height: 100%;
+    width: calc(100% - 78px);
+    left: 78px;
+    transition: all .5s ease-out;
+    margin-left: 7px;
+}
+.sidebar.active ~ .home-content {
     width: calc(100% - 240px);
     left: 240px;
+    margin-left: 7px;
 }
 
 /*temp*/

@@ -162,7 +162,7 @@ function getTriangleRaises(initial, final) { //initial % 3 === 0
         let total = initial * i, around = c + cc + 3;
         acum = total;
 
-        triangleRaises += `${i} ~ ${c} sc, 1 inc+, (${(total - around - 6) / 2} sc,1 inc+)*2 ${cc} sc [${total}] ~<br>`;
+        triangleRaises += `${i} ~ ${c} sc, 1 inc+, (${(total - around - 6) / 2} sc,1 inc+)*2, ${cc} sc [${total}] ~<br>`;
 
         c++;
         cc++;

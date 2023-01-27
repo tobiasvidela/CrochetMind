@@ -1,6 +1,6 @@
-'use stric';
+'use strict';
 //REGULAR RAISES
-const patterns = document.querySelector('.patterns'),
+const ListOfPatterns = document.querySelector('.patterns'),
       start = document.querySelector('#start'),
       end = document.querySelector('#end'),
       eye = document.querySelector('#pattern-toggle-view'),
@@ -8,39 +8,138 @@ const patterns = document.querySelector('.patterns'),
       result = document.querySelector('.pattern-result'),
       btnGenerator = document.querySelector('.pattern-generator');
 
-
-      
-      
 btnGenerator.addEventListener('click',() => {
     let startPoints = start.value,
-        endPoints = end.value;
-    console.log(start);
+        endPoints = end.value,
+        patterns = ListOfPatterns.value;
 
     let pattern = ``;
 
     switch (patterns) {
         case 'spiral':
-            pattern = getPattern(startPoints, endPoints, 'spiral');
+            pattern = getRegularPattern(startPoints, endPoints, 'spiral');
             break;
-        case 'circle':
-            pattern = getPattern(startPoints, endPoints, 'circle');
+            case 'circle':
+            pattern = getRegularPattern(startPoints, endPoints, 'circle');
             break;
         case 'square':
-            pattern = getPattern(startPoints, endPoints, 'square');
+            pattern = getRegularPattern(startPoints, endPoints, 'square');
             break;
         case 'triangle':
-            pattern = getPattern(startPoints, endPoints, 'triangle');
+            pattern = getRegularPattern(startPoints, endPoints, 'triangle');
             break;
     };
     
-
     return result.innerHTML = pattern;
 });
 
-function getPattern(initial, final, pat) { //get the pattern of regular raises
-    let raises = `0 ~ Anillo Mágico ~ <br>`;
-    return raises;
-}
+function getRegularPattern(initial, final, pat) { //get pattern with regular raises and regular decreases
+    //create an output
+    let output = ``;
+    // obtain pattern with regular raises and join it to the output
+    output += getRegularRaises(initial, final, pat);
+
+    //create transition pattern
+
+    // obtain pattern with reuglar decreases
+
+    return output;
+};
+
+function getRegularRaises(initial, final, pat) { //get the pattern of regular raises
+    //validate start points and end points
+    if (!validatePoints(initial, final, pat)) {
+        return console.error('Incorrect values.');
+    };
+
+    //starting point
+    let regularRaises = `0 ~ Anillo Mágico ~ <br>`;
+
+    //get points for the pattern
+    if (pat === 'spiral') {
+
+    };
+    if (pat === 'circle')
+    if (pat === 'square')
+    if (pat === 'triangle')
+
+
+
+    return regularRaises;
+
+};
+
+function validatePoints(initial, final, pat) { //validate points entered
+    if (initial == 0 || final == 0) {
+        swal({
+            icon: 'error',
+            text: 'Points can\'t be 0 (zero).',
+            buttons: false,
+            timer: 4200,
+        });
+        return false;
+    };
+    if (final % initial != 0) {
+        swal({
+            icon: 'error',
+            text: 'Final points must be a multiple of start points.',
+            buttons: false,
+            timer: 4200,
+        });
+        return false;
+    };
+    if (initial == final) {
+        swal({
+            icon: 'error',
+            text: 'Points can\'t be the same.',
+            buttons: false,
+            timer: 4200,
+        });
+        return false;
+    };
+    if (initial < 3) {
+        swal({
+            icon: 'error',
+            text: 'Start value must be 3 (three) or greater.',
+            buttons: false,
+            timer: 4200,
+        });
+        return false;
+    }
+    if (initial > 100) {
+        swal({
+            icon: 'warning',
+            text: '🤨 What? 🤔 Really?? OK...🤐',
+            buttons: false,
+            timer: 2000,
+        });
+        return true;
+    };
+    if (pat == 'square') {
+        if (initial <= 3) {
+            swal({
+                icon: 'error',
+                text: 'Start value must be greater than 3 (three).',
+                buttons: false,
+                timer: 4200,
+            });
+            return false;
+        };
+    };
+    if (pat == 'triangle') {
+        if (initial % 3 != 0) {
+            swal({
+                icon: 'error',
+                text: 'Start value must be a multiple of 3 (three).',
+                buttons: false,
+                timer: 4200,
+            });
+            return false;
+        };
+    };
+
+    return true;
+};
 
 function fixEnd() { //adapts end points to be proportional to start points
     let startValue = Number(start.value);
@@ -51,10 +150,10 @@ function fixEnd() { //adapts end points to be proportional to start points
 
     let difference = end.value % endMin;
     end.value -=  difference;
-}
+};
 start.onclick = () => { 
     fixEnd()
-}
+};
 end.onclick = () => {
     fixEnd()
 };

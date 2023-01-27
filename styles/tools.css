@@ -1,7 +1,7 @@
 /*TOOLS*/
 
+
 .column {
-    height: max-content;
     width: calc(100% - 15px);
     padding: 1em;
     margin-top: 10px;

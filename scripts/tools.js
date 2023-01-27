@@ -52,8 +52,8 @@ function getRegularRaises(initial, final, pat) { //get the pattern of regular ra
         return console.error('Incorrect values.');
     };
 
-    //starting point
-    let regularRaises = `0 ~ Anillo Mágico ~ <br>`;
+    //starting points
+    let regularRaises = `0 ~ Anillo Mágico ~ <br>1 ~ ${initial} sc [${initial}] ~ (start)<br>`;
 
     //get points for the pattern
     if (pat === 'spiral') {
@@ -67,15 +67,14 @@ function getRegularRaises(initial, final, pat) { //get the pattern of regular ra
     }
     if (pat === 'triangle') {
         regularRaises += getTriangleRaises(initial, final);
-    }
+    };
 
     return regularRaises;
 };
 
 function getSpiralRaises(initial, final) {
-    let spiralRaises = `1 ~ ${initial} sc [${initial}] ~ (start)<br>`;
     
-    spiralRaises += `2 ~ (1 inc)*${initial} [${initial * 2}] ~<br>`;
+    let spiralRaises = `2 ~ (1 inc)*${initial} [${initial * 2}] ~<br>`;
 
     if (final == initial * 2) {
         return spiralRaises;
@@ -94,9 +93,8 @@ function getSpiralRaises(initial, final) {
 };
 
 function getCircleRaises(initial, final) { //get spiral raises with compensations
-    let circleRaises = `1 ~ ${initial} sc [${initial}] ~ (start)<br>`;
     
-    circleRaises += `2 ~ (1 inc)*${initial} [${initial * 2}] ~<br>`;
+    let circleRaises = `2 ~ (1 inc)*${initial} [${initial * 2}] ~<br>`;
 
     if (final == initial * 2) {
         return circleRaises;
@@ -124,7 +122,72 @@ function getCircleRaises(initial, final) { //get spiral raises with compensation
     return circleRaises;
 };
 
+function getSquareRaises(initial, final) { //initial === 4
+    let squareRaises = `2 ~ ${initial} inc+ [${initial * 3}] ~<br>`; //inc+ stands for 3 sc in one stich
+
+    if (final <= initial * 3) {
+        return squareRaises;
+    };
+
+    let acum = 0;
+
+    for (let i = 3, sc = 1; acum < final; i++) {
+        let total = sc * 2 + ((sc * 2) + 3) * 3 + 3;
+        acum = total;
+        squareRaises += `${i} ~ ${sc} sc, 1 inc+, (${sc * 2} sc, 1 inc+)*3, ${sc} sc [${total}] ~<br>`;
+
+        end.value = total;
+        sc++;
+    };
+
+    swal({
+        icon: 'info',
+        title: 'W.I.P.',
+        text: 'This feature is under development, please comment in the Feedback page any issue detected while using this.',
+    });
+
+    return squareRaises;
+};
+
+function getTriangleRaises(initial, final) { //initial % 3 === 0
+    let triangleRaises = `2 ~ (1 sc, 1 inc+)*${(initial * 2 ) / 3} [${(initial * 2)}] ~<br>`;
+
+    if (final == initial * 2) {
+        return triangleRaises;
+    }
+
+    let acum = 0, c = 2, cc = 1; // c and cc stands for compensations
+
+    for (let i = 3; acum < final; i++) {
+        let total = initial * i, around = c + cc + 3;
+        acum = total;
+
+        triangleRaises += `${i} ~ ${c} sc, 1 inc+, (${(total - around - 6) / 2} sc,1 inc+)*2 ${cc} sc [${total}] ~<br>`;
+
+        c++;
+        cc++;
+    };
+
+
+    swal({
+        icon: 'info',
+        title: 'W.I.P.',
+        text: 'This feature is under development, please comment in the Feedback page any issue detected while using this.',
+    });
+
+    return triangleRaises;
+};
+
 function validatePoints(initial, final, pat) { //validate points entered
+    if (initial < 0 || final < 0) {
+        swal({
+            icon: 'error',
+            text: 'Points can\'t be negative.',
+            buttons: false,
+            timer: 4200,
+        });
+        return false;
+    };
     if (initial == 0 || final == 0) {
         swal({
             icon: 'error',
@@ -171,10 +234,10 @@ function validatePoints(initial, final, pat) { //validate points entered
         return true;
     };
     if (pat == 'square') {
-        if (initial <= 3) {
+        if (initial != 4) {
             swal({
                 icon: 'error',
-                text: 'Start value must be greater than 3 (three).',
+                text: 'Start value must be 4 (four).',
                 buttons: false,
                 timer: 4200,
             });
@@ -182,10 +245,10 @@ function validatePoints(initial, final, pat) { //validate points entered
         };
     };
     if (pat == 'triangle') {
-        if (initial % 3 != 0) {
+        if (initial != 6) {
             swal({
                 icon: 'error',
-                text: 'Start value must be a multiple of 3 (three).',
+                text: 'Start value must be 6 (six).',
                 buttons: false,
                 timer: 4200,
             });

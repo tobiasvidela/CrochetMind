@@ -9,8 +9,8 @@ const ListOfPatterns = document.querySelector('.patterns'),
       btnGenerator = document.querySelector('.pattern-generator');
 
 btnGenerator.addEventListener('click',() => {
-    let startPoints = start.value,
-        endPoints = end.value,
+    let startPoints = Number(start.value),
+        endPoints = Number(end.value),
         patterns = ListOfPatterns.value;
 
     let pattern = ``;
@@ -57,17 +57,41 @@ function getRegularRaises(initial, final, pat) { //get the pattern of regular ra
 
     //get points for the pattern
     if (pat === 'spiral') {
-
+        regularRaises += getSpiralRaises(initial, final);
     };
-    if (pat === 'circle')
-    if (pat === 'square')
-    if (pat === 'triangle')
-
-
+    if (pat === 'circle') {
+        regularRaises += getCircleRaises(initial, final);
+    }
+    if (pat === 'square') {
+        regularRaises += getSquareRaises(initial, final);
+    }
+    if (pat === 'triangle') {
+        regularRaises += getTriangleRaises(initial, final);
+    }
 
     return regularRaises;
-
 };
+
+function getSpiralRaises(initial, final) {
+    let spiralRaises = `1 ~ ${initial} sc [${initial}] ~ (start)<br>`;
+    
+    spiralRaises += `2 ~ (1 inc)*${initial} [${initial * 2}] ~<br>`;
+
+    if (final == initial * 2) {
+        return spiralRaises;
+    };
+    
+    let acum = Number(initial);
+    
+    for (let i = 3, sc = 1; acum < final; i++) { //generate raises until final points are reached
+        acum = initial * i;
+        spiralRaises += `${i} ~ (${sc} sc, inc)*${initial} [${initial * i}] ~<br>`;
+        sc++;
+    };
+
+    return spiralRaises;
+}
+
 
 function validatePoints(initial, final, pat) { //validate points entered
     if (initial == 0 || final == 0) {

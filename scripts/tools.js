@@ -5,9 +5,33 @@ const ListOfPatterns = document.querySelector('.patterns'),
       end = document.querySelector('#end'),
       eye = document.querySelector('#pattern-toggle-view'),
       btnHelp = document.querySelector('#pattern-help'),
+      info = document.querySelector('.pattern-info'),
       result = document.querySelector('.pattern-result'),
       btnGenerator = document.querySelector('.pattern-generator');
 
+info.addEventListener('click',() => {
+    info.style.display = 'none';
+    info.style.top = '60%';
+    info.style.pointerEvents = 'none';
+});
+
+btnHelp.addEventListener('click',() => {
+    info.style.display = 'block';
+    setTimeout(() => {
+	    info.style.top = '40%';
+        info.style.pointerEvents = 'auto';
+    }, 0);
+});
+
+eye.addEventListener('click',() => {
+    if (eye.classList.contains('fa-eye')) {
+        eye.classList.replace('fa-eye','fa-eye-slash');
+        result.style.display = 'block';
+    } else {
+        eye.classList.replace('fa-eye-slash','fa-eye');
+        result.style.display = 'none';
+    };
+});
 btnGenerator.addEventListener('click',() => {
     let startPoints = Number(start.value),
         endPoints = Number(end.value),

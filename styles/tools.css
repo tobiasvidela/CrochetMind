@@ -1,13 +1,117 @@
 /*TOOLS*/
 
 
-.column {
-    width: calc(100% - 15px);
+.tools-content {
+    min-height: 100vh;
+    position: absolute;
+    left: 78px;
+    width: calc(100% - 78px);
+    padding: 0;
+    margin: 0;
+    transition: all .5s ease-out;
+}
+.tools-column {
+    height: 400px;
+    width: 100%;
     padding: 1em;
-    margin-top: 10px;
+    margin: 10px;
     border-radius: 20px;
     background: #534EC2;
     text-align: justify;
-    font-size: 20px;
+    font-size: 18px;
     color: #fff;
+    overflow: auto;
+    overflow: overlay;
+}
+.tools-column::-webkit-scrollbar {
+    display: none;
+}
+.sidebar.active ~ .tools-content {
+    left: 240px;
+    width: calc(100% - 240px);
+}
+.tool-title {
+    font-size: 1.75em;
+    font-weight: bolder;   
+}
+.tool-description {
+    padding: 5px;
+}
+.tools-column ul {
+    list-style: none;
+    text-align: left;
+    font-weight: bolder;
+    padding-bottom: 10px;
+}
+.tools-column ol {
+    font-weight: normal;
+    padding: 5px;
+}
+.values {
+    font-size: 15px;
+    padding: 7px;
+    border: none;
+    border-radius: 12px;
+    margin: 5px;
+    width: 160px;
+    text-align: center;
+}
+.values:focus {
+    outline: none;
+}
+.pattern-generator {
+    border: none;
+    /* margin: 40px 0;
+    border-radius: 12px;
+    padding: 5px;
+    background-color: #615BE3; */
+    color: #fff;
+    margin: 30px 0 0 0;
+    padding: 12px;
+    font-size: 1.2rem;
+    font-weight: bolder;
+    text-decoration: none;
+    border-radius: 12px;
+    background: linear-gradient(
+        135deg, #6587FD 50%, transparent 50%
+    );
+    background-position: 100%;
+    background-size: 250%;
+    transition: 0.5s background;
+}
+.pattern-generator:hover {
+    background-position: 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+}
+.display {
+    padding: 20px 12px;
+}
+.pattern-icons {
+    background-color: #eee;
+    color: #6587FD;
+    margin: 0 5px 15px 5px;
+    font-size: 22px;
+    padding: 5px;
+    border-radius: 50%;
+}
+.pattern-icons:hover {
+    cursor: pointer;
+    color: #534EC2;
+}
+.pattern-result {
+    padding: 2px;
+}
+.pattern-info {
+    display: none;
+    pointer-events: none;
+    position: absolute;
+    background: #615BE3;
+    padding: 1.3em 1.3em 0 0;
+    border-radius: 20px;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 80%;
+    height: max-content;
+    transition: all .7s ease-in;
 }
